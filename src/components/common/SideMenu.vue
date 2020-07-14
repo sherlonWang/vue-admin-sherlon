@@ -3,11 +3,11 @@
     'width':this.$store.state.sideMenuCollapse?this.$store.state.sideMenuCollapseWidth+'px':this.$store.state.sideMenuWidth+'px',
     'transition':'width .15s'
   }">
-    <div class="menuheader">
+    <div v-if="this.$store.state.sideMenuHeaderHeight>39" class="menuheader" :style="{'height':this.$store.state.sideMenuHeaderHeight+'px','line-height':this.$store.state.sideMenuHeaderHeight+'px'}">
       <img class="logo" :src="logo"/>
-      <span class="text" v-if="!this.$store.state.sideMenuCollapse">Administrator</span>
+      <p class="text" v-if="!this.$store.state.sideMenuCollapse">Administrator</p>
     </div>
-    <div class="menu" :style="{'height':(this.$store.state.screenHeight-this.$store.state.bannerHeight-80)+'px'}">
+    <div class="menu" :style="{'height':(this.$store.state.screenHeight-this.$store.state.bannerHeight-this.$store.state.sideMenuHeaderHeight-this.$store.state.sideMenuFooterHeight)+'px'}">
       <el-menu
         class="sidebar-el-menu"
         :default-active="activeNav"
@@ -73,7 +73,7 @@
         </template>
       </el-menu>
     </div>
-    <div class="menufooter">
+    <div v-if="this.$store.state.sideMenuFooterHeight>39" class="menufooter" :style="{'height':this.$store.state.sideMenuFooterHeight+'px','line-height':this.$store.state.sideMenuFooterHeight+'px'}">
       <el-button class="footerbtn" @click="collapseChange" type="text" :icon="this.$store.state.sideMenuCollapse?'el-icon-s-unfold':'el-icon-s-fold'"/>
       <el-button v-if="!this.$store.state.sideMenuCollapse" style="color: #3a8ee6" class="footerbtn" type="text" icon="el-icon-user-solid"/>
       <el-button v-if="!this.$store.state.sideMenuCollapse" style="color: #5ce8a4" class="footerbtn" type="text" icon="el-icon-s-comment"/>
@@ -140,31 +140,28 @@
   }
   .menuheader{
     width: 100%;
-    height: 40px;
+    /*height: 40px;*/
     line-height: 40px;
     background-color: #303133;
     color: #fff;
-    /*padding-left: 20px;*/
-    /*text-align: center;*/
   }
   .text{
     margin-left: 5px;
     font-size: 20px;
-    /*display: inline-block;*/
+    display: inline-block;
+    vertical-align: middle;
     letter-spacing: 2px;
   }
   .logo{
     display: inline-block;
-    vertical-align: top;
-    width: 25px;
-    height: 25px;
-    margin-top: 7px;
-    margin-left: 20px;
-    /*margin: 7px 20px;*/
+    vertical-align: middle;
+    width: 40px;
+    /*height: 25px;*/
+    margin-left: 13px;
   }
   .menufooter{
     width: 100%;
-    height: 40px;
+    /*height: 40px;*/
     line-height: 40px;
     background-color: #303133;
   }

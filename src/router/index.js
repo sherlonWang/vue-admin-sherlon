@@ -14,10 +14,22 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/admin'
+      redirect: '/admin/dashboard'
+    },
+    {
+      path: '/redirect',
+      hidden: true,
+      component: () => import('@/components/pages/Admin.vue'),
+      children: [
+        {
+          path: '/redirect/:path*', // path为默认名称 通配符*必须存在 反之404
+          component: () => import('@/components/common/Redirect.vue')
+        }
+      ]
     },
     {
       path: '/admin',
+      redirect: '/admin/dashboard',
       name: 'Admin',
       component: () => import('@/components/pages/Admin.vue'),
       children: [
@@ -30,6 +42,11 @@ export default new Router({
           path: '404',
           component: () => import('../components/pages/404.vue'),
           meta: {title: '404页面', icon: 'el-icon-s-tools'}
+        },
+        {
+          path: '403',
+          component: () => import('../components/pages/403.vue'),
+          meta: {title: '403页面', icon: 'el-icon-s-tools'}
         }
       ]
     }

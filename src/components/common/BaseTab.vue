@@ -24,7 +24,8 @@
           操作<i class="el-icon-arrow-down el-icon--right"></i>
         </el-button>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item command="current">关闭当前</el-dropdown-item>
+          <el-dropdown-item command="refresh">刷新</el-dropdown-item>
+          <el-dropdown-item command="current">关闭</el-dropdown-item>
           <el-dropdown-item command="other">关闭其他</el-dropdown-item>
           <el-dropdown-item command="all">关闭所有</el-dropdown-item>
         </el-dropdown-menu>
@@ -35,7 +36,8 @@
       :style="{left:left+'px',top:top+'px'}"
       class="contextmenu"
     >
-      <li @click="closeCurrentTab('menu')">关闭当前</li>
+      <li @click="refreshCurrentTab()">刷新</li>
+      <li @click="closeCurrentTab('menu')">关闭</li>
       <li @click="closeOtherTabs('menu')">关闭其他</li>
       <li @click="closeAllTabs('menu')">关闭所有</li>
     </ul>
@@ -85,6 +87,10 @@
       // 设置标签
       tabAdd(route) {
         const that = this;
+        // 判断是否为redirect过来的路由，如果是，不作处理
+        if (route.fullPath.indexOf("/redirect")>-1) {
+          return;
+        }
         const filterTab = this.tabList.filter(item => {
           return item.path === route.fullPath;
         });
@@ -128,6 +134,15 @@
         // 删除tab后需要重新切换路由
         that.$router.push(activeName);
       },
+      refreshCurrentTab(){
+        console.log("activetab:",this.activeTab);
+        // const { path } = item;
+        this.$nextTick(() => {
+          this.$router.replace({
+            path: '/redirect' + this.activeTab
+          })
+        })
+      },
       closeCurrentTab(op){
         const currentTab = op === 'btn'?this.activeTab:this.contextActiveTab;
         if (this.tabList.length > 1) {
@@ -147,6 +162,9 @@
       commandTabs(command){
         const that = this;
         switch (command) {
+          case "refresh":
+            that.refreshCurrentTab();
+            break;
           case "current":
             that.closeCurrentTab("btn");
             break;

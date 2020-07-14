@@ -1,17 +1,13 @@
 <template>
   <div class="error-page">
-      <div class="error-code">4<span>0</span>4</div>
-      <div class="error-desc">啊哦~ 你所访问的页面不存在</div>
+      <div class="error-code">4<span>0</span>3</div>
+      <div class="error-desc">啊哦~ 你没有权限访问该页面哦</div>
       <div class="error-handle">
           <router-link to="/">
             <el-button type="primary" size="large">返回首页</el-button>
           </router-link>
           <el-button class="error-btn" type="primary" size="large" @click="goBack">返回上一页</el-button>
       </div>
-    <input type="text"/>
-    <div style="background-color: #3a8ee6;width:100%;height: 500px;">
-
-    </div>
   </div>
 </template>
 
@@ -41,7 +37,7 @@ export default {
         line-height: 1;
         font-size: 250px;
         font-weight: bolder;
-        color: #2d8cf0;
+        color: #f02d2d;
     }
     .error-code span{
         color: #00a854;

@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <Banner/>
     <router-view v-if="isRouterAlive" />
   </div>
 </template>
@@ -9,7 +8,6 @@
   import Banner from "./components/common/Banner";
   export default {
     name: 'App',
-    components: {Banner},
     provide(){
       return {
         reload: this.reload
