@@ -22,6 +22,12 @@ Vue.use(ElementUI,{
   size:"medium"
 });
 
+// 引入form-create
+import formCreate, {maker} from '@form-create/element-ui'
+Vue.use(formCreate);
+// 全局组件注册
+import './component-register'
+
 import HighchartsVue from 'highcharts-vue'
 import fa from "element-ui/src/locale/lang/fa";
 Vue.use(HighchartsVue);
