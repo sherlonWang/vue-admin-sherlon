@@ -50,6 +50,11 @@
             icon: 'el-icon-s-home',
             index: '/admin/403',
             title: '403页面'
+          },
+          {
+            icon: 'el-icon-s-home',
+            index: '/admin/goods',
+            title: '商品管理'
           }
         ]
       }

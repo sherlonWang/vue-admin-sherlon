@@ -47,6 +47,11 @@ export default new Router({
           path: '403',
           component: () => import('../components/pages/403.vue'),
           meta: {title: '403页面', icon: 'el-icon-s-tools'}
+        },
+        {
+          path: 'goods',
+          component: () => import('../components/pages/Goods.vue'),
+          meta: {title: '商品管理', icon: 'el-icon-s-tools'}
         }
       ]
     }
