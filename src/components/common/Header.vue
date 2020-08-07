@@ -6,7 +6,7 @@
     <div class="logo">
       <img class="img" src="../../assets/logo.png" />
       <p class="text">
-        试验数据管理系统
+        Vue后台管理系统
       </p>
     </div>
     <div class="bar">
@@ -29,22 +29,24 @@
 <style scoped>
   .header{
     line-height: 64px;
-    background-color: #fff;
-    border-bottom: 1px solid #d1d1d1;
+    background-color: #393E49;
+    /*border-bottom: 1px solid #d1d1d1;*/
+    color: #fff;
   }
   .logo{
-    margin-left: 20px;
+    margin-left: 30px;
     width: 40%;
     display: inline-block;
     vertical-align: middle;
   }
   .img{
-    width: 80px;
+    width: 35px;
     display: inline-block;
     vertical-align: middle;
   }
   .text{
-    font-size: 22px;
+    font-size: 23px;
+    margin-left: 10px;
     display: inline-block;
     vertical-align: middle;
   }

@@ -155,9 +155,9 @@
   .logo{
     display: inline-block;
     vertical-align: middle;
-    width: 40px;
+    width: 25px;
     /*height: 25px;*/
-    margin-left: 13px;
+    margin-left: 22px;
   }
   .menufooter{
     width: 100%;
